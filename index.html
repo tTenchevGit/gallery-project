@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
+            </div>
+            <ul id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+    <section id="home">
+        <div class="intro">
+            <div class="owner-photo-container">
+                <img src="sticker2.jpg" alt="Owner Photo" class="owner-photo">
+                
+            </div>
+            
+            <strong id="NAME">ANA KOSTOVA</strong>
+            <h1>Secret Art Gallery</h1>
+            <p>By <strong >ANA KOSTOVA</strong></p>
+            <button onclick="scrollToSection('gallery')">Explore Gallery</button>
+        </div>
+        
+    </section>
+    <!-- <section id="gallery" class="hidden">
+        <div class="gallery-item">
+            <img src="image1.jpg" alt="Art 1" class="interactive-img">
+        </div>
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="Art 2" class="interactive-img">
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Art 3" class="interactive-img">
+        </div>
+        <div class="gallery-item">
+            <img src="image4.jpg" alt="Art 4" class="interactive-img">
+        </div>
+    </section> -->
+    <section id="gallery" class="hidden">
+        <div class="gallery-item">
+            <img src="image1.jpg" alt="Art 1" class="interactive-img" onclick="openModal('modal1')">
+                <div>NAME</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="Art 2" class="interactive-img" onclick="openModal('modal2')">
+            <div>NAME</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Art 3" class="interactive-img" onclick="openModal('modal3')">
+            <div>NAME</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image4.jpg" alt="Art 4" class="interactive-img" onclick="openModal('modal4')">
+            <div>NAME</div>
+        </div>
+    </section>
+    
+    <!-- Modal for image 1 -->
+    <div id="modal1" class="modal">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <div class="modal-content">
+            <span class="prev" onclick="changeSlide(-1, 'modal1')">&#10094;</span>
+            <img src="image1.jpg" alt="Art 1">
+            <img src="image4.jpg" alt="Art 1">
+            <!-- Add more images for this gallery -->
+            <span class="next" onclick="changeSlide(1, 'modal1')">&#10095;</span>
+        </div>
+    </div>
+    
+    <!-- Modal for image 2 -->
+    <div id="modal2" class="modal">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <div class="modal-content">
+            <span class="prev" onclick="changeSlide(-1, 'modal1')">&#10094;</span>
+            <img src="image2.jpg" alt="Art 1">
+            <img src="image3.jpg" alt="Art 1">
+            <!-- Add more images for this gallery -->
+            <span class="next" onclick="changeSlide(1, 'modal1')">&#10095;</span>
+            <!-- Add more images for this gallery -->
+        </div>
+    </div>
+    
+    <!-- Modal for image 3 -->
+    <div id="modal3" class="modal">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <div class="modal-content">
+            <span class="prev" onclick="changeSlide(-1, 'modal1')">&#10094;</span>
+            <img src="image3.jpg" alt="Art 1">
+            <img src="image4.jpg" alt="Art 1">
+            <!-- Add more images for this gallery -->
+            <span class="next" onclick="changeSlide(1, 'modal1')">&#10095;</span>
+            <!-- Add more images for this gallery -->
+        </div>
+    </div>
+    
+    <!-- Modal for image 4 -->
+    <div id="modal4" class="modal">
+        <span class="close" onclick="closeModal('modal4')">&times;</span>
+        <div class="modal-content">
+            <span class="prev" onclick="changeSlide(-1, 'modal1')">&#10094;</span>
+        <img src="image4.jpg" alt="Art 1">
+        <img src="image2.jpg" alt="Art 1">
+        <!-- Add more images for this gallery -->
+        <span class="next" onclick="changeSlide(1, 'modal1')">&#10095;</span>
+            <!-- Add more images for this gallery -->
+        </div>
+    </div>
+    
+    
+    <section id="about" class="hidden">
+        <!-- <h2>About the Gallery</h2>
+        <p>Our gallery showcases the finest geometric art.</p>
+    </section> -->
+    <!-- <section id="contact" class="hidden">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section> -->
+    <footer>
+        &copy; Secret Art Gallery by Ana Kostova. All rights reserved.
+    </footer>
+    <!-- <script>
+        let slideIndexes = {};
+
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+    slideIndexes[modalId] = 0;
+    showSlides(0, modalId);
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+}
+
+function changeSlide(n, modalId) {
+    showSlides(slideIndexes[modalId] += n, modalId);
+}
+
+function showSlides(n, modalId) {
+    let slides = document.querySelectorAll(`#${modalId} .modal-content img`);
+    if (n >= slides.length) { slideIndexes[modalId] = 0 }
+    if (n < 0) { slideIndexes[modalId] = slides.length - 1 }
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+    }
+    slides[slideIndexes[modalId]].style.display = "block"; 
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    let rotation = 0;
+
+    function rotatePhoto() {
+        rotation += 180;
+        document.querySelector(".owner-photo").style.transform = `rotateY(${rotation}deg)`;
+    }
+
+    setInterval(rotatePhoto, 5000);
+
+    window.addEventListener("scroll", function() {
+        const sections = document.querySelectorAll("section");
+        sections.forEach(section => {
+            if (window.scrollY > section.offsetTop - window.innerHeight / 2) {
+                section.classList.remove("hidden");
+            }
+        });
+    });
+});
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('show');
+}
+
+    </script> -->
+    <script src="script.js"></script>
+</body>
+</html>
